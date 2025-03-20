@@ -11,12 +11,12 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations."dragon" = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."dragonPc" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      networking.hostName = "dragon";
+
       specialArgs = { inherit inputs; };
       modules = [
-        ./hosts/dragon/default.nix
+        ./hosts/dragonPc/default.nix
         ./modules/kde/kde.nix
         ./modules/global-users
         inputs.home-manager.nixosModules.default

@@ -31,7 +31,7 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "dragon"; 
+  networking.hostName = "dragonPc";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
