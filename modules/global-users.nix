@@ -3,7 +3,7 @@
 let
   # Import all user files from the users/ directory
   userFiles = builtins.readDir ../users;
-  users = lib.mapAttrs (name: _: import (../users + "/${name}/default.nix")) userFiles;
+  users = lib.mapAttrs (name: _: import (../users + "/${name}/default.nix") { inherit pkgs lib; }) userFiles;
 in {
   options.globalUsers = lib.mkOption {
     type = lib.types.attrsOf (lib.types.submodule {

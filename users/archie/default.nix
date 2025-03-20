@@ -1,4 +1,3 @@
-# modules/global-users/default.nix
 { pkgs, ... }:
 {
     isNormalUser = true;
