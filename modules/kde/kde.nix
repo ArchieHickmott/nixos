@@ -22,8 +22,8 @@
       environment.systemPackages = with pkgs; [
         xrdp
       ];
-      
-      networking.firewall.allowedTCPPorts = [22];
+
+      networking.firewall.allowedTCPPorts = [3389];
 
       services.xrdp = {
         enable = true;
