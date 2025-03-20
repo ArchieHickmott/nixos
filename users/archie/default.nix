@@ -11,5 +11,4 @@
       steam
       maturin
     ];
-    programs.git.config
 }

@@ -16,9 +16,9 @@
 
       specialArgs = { inherit inputs; };
       modules = [
-        ./hosts/dragonPc/default.nix
+        ./hosts/dragonPc/configuration.nix
         ./modules/kde/kde.nix
-        ./modules/global-users
+        ./modules/global-users.nix
         inputs.home-manager.nixosModules.default
       ];
     };
