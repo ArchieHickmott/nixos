@@ -20,13 +20,17 @@
       };
 
       environment.systemPackages = with pkgs; [
+        kdePackages.kirigami
+        kdePackages.kirigami-addons  
         xrdp
+        plasma5Packages.kdeplasma-addons 
       ];
 
       networking.firewall.allowedTCPPorts = [3389];
 
       services.xrdp = {
         enable = true;
+        defaultWindowManager = "plasma_session";
       };
   };
 }
