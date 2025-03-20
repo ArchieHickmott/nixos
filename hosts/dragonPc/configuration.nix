@@ -11,7 +11,6 @@ let
       ffmpeg
       stdenv
       nmap
-      freerdp
       git
       cmake
       rustup
