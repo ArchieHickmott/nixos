@@ -21,13 +21,12 @@
 
       environment.systemPackages = with pkgs; [
         xrdp
-        xorgxrdp
-        xfce4 
       ];
+      
+      networking.firewall.allowedTCPPorts = [22];
 
       services.xrdp = {
         enable = true;
-        defaultWindowManager = "xfce4";
       };
   };
 }
