@@ -11,8 +11,9 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations.dragon = nixpkgs.lib.nixosSystem {
+    nixosConfigurations."dragon" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      networking.hostName = "dragon";
       specialArgs = { inherit inputs; };
       modules = [
         ./hosts/dragon/default.nix
