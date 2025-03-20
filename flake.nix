@@ -13,7 +13,6 @@
   outputs = { self, nixpkgs, ... }@inputs: {
     nixosConfigurations."dragonPc" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-
       specialArgs = { inherit inputs; };
       modules = [
         ./hosts/dragonPc/configuration.nix
