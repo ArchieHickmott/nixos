@@ -4,7 +4,7 @@
   imports = [ <home-manager/nixos>  ];
 
   config = {
-    home-manager.users.youruser = {
+    home-manager.users.archie = {
       # home-manager settings
       programs.git = {
         enable = true;
