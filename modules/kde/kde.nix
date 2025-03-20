@@ -23,14 +23,27 @@
         kdePackages.kirigami
         kdePackages.kirigami-addons  
         xrdp
-        plasma5Packages.kdeplasma-addons 
+
+        xfce.xfce4-session  # XFCE session manager
+        xfce.xfce4-panel    # XFCE panel
+        xfce.xfce4-settings # XFCE settings manager
+        xfce.xfce4-appfinder # Application finder
+        xfce.xfce4-terminal # XFCE terminal
+        xfce.xfce4-notifyd  # Notification daemon
+        xfce.xfce4-power-manager # Power management
+        xfce.thunar        # File manager
+        xfce.xfce4-screenshooter # Screenshot tool
+        xfce.xfce4-taskmanager # Task manager
+        xfce.xfce4-whiskermenu-plugin # Alternative application launcher
+        xfce.xfce4-pulseaudio-plugin # Audio control
       ];
 
       networking.firewall.allowedTCPPorts = [3389];
 
       services.xrdp = {
         enable = true;
-        defaultWindowManager = "plasma_session";
+        desktopManager.xfce.enable = true;
+        displayManager.defaultSession = "xfce";
       };
   };
 }
