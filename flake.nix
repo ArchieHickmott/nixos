@@ -18,7 +18,7 @@
         ./hosts/dragon/default.nix
         ./modules/kde/kde.nix
         ./modules/global-users
-        # inputs.home-manager.nixosModules.default
+        inputs.home-manager.nixosModules.default
       ];
     };
 
