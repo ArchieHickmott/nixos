@@ -19,15 +19,15 @@
         variant = "";
       };
 
-    environment.systemPackages = [
-      xrdp
-      xorgxrdp
-      xfce4 
-    ];
+      environment.systemPackages = with pkgs; [
+        xrdp
+        xorgxrdp
+        xfce4 
+      ];
 
-    services.xrdp = {
-      enable = true;
-      defaultWindowManager = "xfce4";
-    };
+      services.xrdp = {
+        enable = true;
+        defaultWindowManager = "xfce4";
+      };
   };
 }
