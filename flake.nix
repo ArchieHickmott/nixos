@@ -18,6 +18,7 @@
         ./hosts/dragonPc/configuration.nix
         ./modules/kde/kde.nix
         ./modules/global-users.nix
+        ./modules/virtualbox
         inputs.home-manager.nixosModules.default
       ];
     };
