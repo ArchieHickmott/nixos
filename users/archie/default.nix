@@ -9,6 +9,5 @@
       rpi-imager
       steam
       maturin
-      virtualbox
     ];
 }

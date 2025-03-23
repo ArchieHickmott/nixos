@@ -1,7 +1,7 @@
 { pkgs, lib, config, ...}:
 {
     options = {
-        plasma.enable =
+        virtualbox.enable =
             lib.mkEnableOption "enables KDE Plasma";
     };
 

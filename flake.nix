@@ -15,10 +15,11 @@
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
       modules = [
+        ./modules/global-config.nix
         ./hosts/dragonPc/configuration.nix
         ./modules/kde/kde.nix
         ./modules/global-users.nix
-        ./modules/virtualbox
+        ./modules/qemu/default.nix
         inputs.home-manager.nixosModules.default
       ];
     };
