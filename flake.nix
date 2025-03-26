@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake";
+  description = "NixOS config flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -10,23 +10,30 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations."dragonPc" = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, home-manager, ... }:
+    let
       system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./modules/global-config.nix
-        ./hosts/dragonPc/configuration.nix
-        ./modules/kde/kde.nix
-        ./modules/global-users.nix
-        ./modules/qemu/default.nix
-        inputs.home-manager.nixosModules.default
-      ];
-    };
+    in {
+      nixosConfigurations.dragonPc = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./modules/global-config.nix
+          ./hosts/dragonPc/configuration.nix
+          ./modules/kde/kde.nix
+          ./users/archie/default.nix
+          ./modules/qemu/default.nix
 
-    homeConfigurations."archie" = inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.x86_64-linux; 
-      modules = [ ./home.nix ];
+          home-manager.nixosModules.default
+
+          {
+            home-manager.users.archie = {
+              imports = [
+                ./modules/users/archie/home.nix
+              ];
+            };
+          }
+        ];
+      };
     };
-  };
 }
+
