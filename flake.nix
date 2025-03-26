@@ -1,3 +1,4 @@
+
 {
   description = "NixOS config flake";
 
@@ -20,20 +21,20 @@
           ./modules/global-config.nix
           ./hosts/dragonPc/configuration.nix
           ./modules/kde/kde.nix
-          ./users/archie/default.nix
           ./modules/qemu/default.nix
+          ./users/archie/default.nix
 
           home-manager.nixosModules.default
 
           {
             home-manager.users.archie = {
               imports = [
-                ./modules/users/archie/home.nix
+                ./users/archie/home.nix
               ];
+              home.stateVersion = "24.11"; # Ensure correct state version
             };
           }
         ];
       };
     };
 }
-

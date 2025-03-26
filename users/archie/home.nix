@@ -2,8 +2,9 @@
 
 {
   # Make sure this matches your system user:
-  home.username = "myuser";
-  home.homeDirectory = "/home/myuser";
+  home.username = "archie";
+  home.homeDirectory = "/home/archie";
+  nixpkgs.config.allowUnfree = true;
 
   # Example: console configuration
   # If you want custom fonts or other console-related tweaks:
@@ -40,12 +41,8 @@
     rpi-imager
     steam
     maturin
-    museScore
+    musescore
   ];
-
-  # Example: MuseScore config
-  # If you want to store a MuseScore config file in git, you can do:
-  xdg.configFile."MuseScore/MuseScore4.ini".source = ./musescore4.ini;
 
   # You can do the same pattern for other apps:
   # xdg.configFile."foo/bar.conf".source = ./bar.conf;
