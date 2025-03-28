@@ -18,6 +18,7 @@
     rpi-imager
     steam
     maturin
+    git
   ];
 
   programs.home-manager.enable = true;

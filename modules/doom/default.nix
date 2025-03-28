@@ -4,13 +4,11 @@
   options.doom.enable = lib.mkEnableOption "Doom Emacs configuration";
 
   config = lib.mkIf config.doom.enable {
-    home.file = {
-      ".doom.d".source = ../users/archie/dotfiles/.doom.d;
-    };
+    home.file.".doom.d".source = ../../users/archie/dotfiles/.doom.d;
 
     home.packages = with pkgs; [
       emacs                         # Emacs itself
-      git                           # Required for updates
+      git                           # Required for updates (only one instance)
       ripgrep                       # Search functionality
       fd                            # Fast file searching
       gnutls                        # TLS support
@@ -32,14 +30,18 @@
       nixfmt                        # Nix formatting
     ];
 
-    # Ensure Doom Emacs is installed
-    home.activation = {
-      doom-emacs = ''
-        if [ ! -d "$HOME/.emacs.d" ]; then
-          git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
-          ~/.emacs.d/bin/doom install
-        fi
-      '';
-    };
+    # Ensure Doom Emacs is installed or updated,
+    # adding git's bin directory to PATH explicitly.
+    home.activation.doom-emacs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      export PATH=${pkgs.emacs}/bin:${pkgs.git}/bin:$PATH
+      if [ ! -d "$HOME/.emacs.d" ]; then
+        echo "Cloning Doom Emacs..."
+        git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+        ~/.emacs.d/bin/doom install
+      else
+        echo "Updating Doom Emacs..."
+        ~/.emacs.d/bin/doom sync
+      fi
+    '';
   };
 }
