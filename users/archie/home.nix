@@ -6,9 +6,9 @@
   home.homeDirectory = "/home/archie";
   nixpkgs.config.allowUnfree = true;
 
-  imports = [ ../../modules/doom.nix ];
+  imports = [ ../../modules/doom/default.nix ];
 
-  doom.enable = True;
+  doom.enable = true;
 
   home.packages = with pkgs; [
     htop

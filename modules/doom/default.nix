@@ -30,10 +30,6 @@
       yarn                          # Required for some LSP servers
       python3                       # Python support
       nixfmt                        # Nix formatting
-
-      # Fonts for Emacs
-      nerdfonts                     # Icons
-      fontconfig                    # Font detection
     ];
 
     # Ensure Doom Emacs is installed
