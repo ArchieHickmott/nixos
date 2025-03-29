@@ -4,7 +4,8 @@
   options.doom.enable = lib.mkEnableOption "Doom Emacs configuration";
 
   config = lib.mkIf config.doom.enable {
-    home.file.".doom.d".source = ../../users/archie/dotfiles/.doom.d;
+
+    fonts.fontconfig.enable = true;
 
     home.packages = with pkgs; [
       emacs                         # Emacs itself
@@ -27,8 +28,11 @@
       nodejs                        # Language Server Protocol (LSP)
       yarn                          # Required for some LSP servers
       python3                       # Python support
-      nixfmt                        # Nix formatting
+      nixfmt-classic                # Nix formatting
+
+      nerd-fonts.symbols-only
     ];
+
 
     # Ensure Doom Emacs is installed or updated,
     # adding git's bin directory to PATH explicitly.
