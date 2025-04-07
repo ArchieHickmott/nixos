@@ -19,6 +19,8 @@
     steam
     maturin
     git
+    wine
+    remmina
   ];
 
   programs.home-manager.enable = true;
