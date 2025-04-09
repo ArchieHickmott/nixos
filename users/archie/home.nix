@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{pkgs, ... }:
 
 {
   # Make sure this matches your system user:
@@ -21,6 +21,7 @@
     git
     wine
     remmina
+    wireshark
   ];
 
   programs.home-manager.enable = true;

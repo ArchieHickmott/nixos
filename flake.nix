@@ -11,7 +11,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
     in {
@@ -20,6 +20,27 @@
         modules = [
           ./modules/global-config.nix
           ./hosts/dragonPc/configuration.nix
+          ./modules/kde/kde.nix
+          ./modules/qemu/default.nix
+          ./users/archie/default.nix
+
+          home-manager.nixosModules.default
+
+          {
+            home-manager.users.archie = {
+              imports = [
+                ./users/archie/home.nix
+              ];
+              home.stateVersion = "24.11"; # Ensure correct state version
+            };
+          }
+        ];
+      };
+      nixosConfigurations.smallGen9 = nixpkgs.lib.nixosSystem {
+        inherit system;
+          modules = [
+          ./modules/global-config.nix
+          ./hosts/smallGen9/configuration.nix
           ./modules/kde/kde.nix
           ./modules/qemu/default.nix
           ./users/archie/default.nix
