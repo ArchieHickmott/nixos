@@ -1,7 +1,6 @@
 {pkgs, ... }:
 
 {
-  # Make sure this matches your system user:
   home.username = "archie";
   home.homeDirectory = "/home/archie";
   nixpkgs.config.allowUnfree = true;
@@ -22,7 +21,19 @@
     wine
     remmina
     wireshark
+    qpwgraph
+    ardour
+    spotify
+    hydrogen
+    caps
+    surge-XT
+    ghidra
+    obsidian
+    trunk
+    reaper
+    vital
   ];
+
 
   programs.home-manager.enable = true;
 }
